@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Bíblia Gerador de Versos",
-    default: "Bíblia Gerador de Versos",
+    template: "%s | Bíblia Verso",
+    default: "Bíblia Verso",
   },
-  description: "Bíblia Gerador de Versos",
+  description: "Bíblia Verso | Gerador de Versos da Bíblia",
 };
 
 export default function RootLayout({
@@ -28,7 +29,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Header />
+          <main>{children}</main>
         </ThemeProvider>
       </body>
     </html>

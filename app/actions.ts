@@ -27,9 +27,14 @@ export async function generateVerse() {
     };
 
     revalidateTag("verse");
+    await delay(1000);
     return formattedData;
     // ...
   } catch (error) {
     return console.log(error);
   }
+}
+
+export async function delay(ms: number) {
+  return await new Promise((r) => setTimeout(r, ms));
 }
