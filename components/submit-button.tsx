@@ -4,8 +4,11 @@ import { useFormStatus } from "react-dom";
 import { Button } from "./ui/button";
 import { RefreshCwIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ComponentProps } from "react";
 
-export function SubmitButton({ className }: { className?: string }) {
+interface ButtonProps extends ComponentProps<"button"> {}
+
+export function SubmitButton({ className, ...props }: ButtonProps) {
   const { pending } = useFormStatus();
 
   return (
@@ -13,15 +16,22 @@ export function SubmitButton({ className }: { className?: string }) {
       type="submit"
       disabled={pending}
       aria-disabled={pending}
-      size={"icon"}
+      size={"default"}
       variant={"default"}
-      title={"Gerar verso"}
-      className={cn("select-none", className)}
+      {...props}
+      className={cn(
+        "select-none w-full flex gap-x-3 uppercase text-xs font-semibold",
+        className
+      )}
     >
       {pending ? (
-        <RefreshCwIcon className="w-5 h-5 animate-spin" />
+        <>
+          {"Gerando verso..."} <RefreshCwIcon className="size-4 animate-spin" />
+        </>
       ) : (
-        <RefreshCwIcon className="w-5 h-w-5" />
+        <>
+          {"Gerar novo verso"} <RefreshCwIcon className="size-4" />
+        </>
       )}
     </Button>
   );

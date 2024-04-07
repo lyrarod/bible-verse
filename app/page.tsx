@@ -9,25 +9,16 @@ export default async function Home() {
     <section
       className={`flex flex-col min-h-screen items-center justify-center overflow-hidden`}
     >
-      {verse ? (
-        <div className="flex flex-col justify-center w-full max-w-lg min-h-screen p-6 whitespace-pre-wrap">
-          {/* <code className="relative w-full max-w-lg p-6 mb-6 font-mono text-xs font-medium rounded bg-muted">
-            {verse ? JSON.stringify(verse, null, 2) : null}
-          </code> */}
+      <div className="flex flex-col justify-center w-full max-w-lg min-h-screen p-6 whitespace-pre-wrap">
+        <form
+          action={generateVerse}
+          className="flex flex-col px-4 py-10 space-y-6 rounded-sm sm:px-6 dark:border dark:border-primary drop-shadow sm:space-y-8 bg-secondary"
+        >
+          {verse ? <BlockQuote verse={verse} /> : null}
 
-          <form
-            action={async () => {
-              "use server";
-              await generateVerse();
-            }}
-            className="flex flex-col sm:gap-y-8 gap-y-4"
-          >
-            <BlockQuote verse={verse} />
-
-            <SubmitButton className="flex self-end" />
-          </form>
-        </div>
-      ) : null}
+          <SubmitButton />
+        </form>
+      </div>
     </section>
   );
 }
