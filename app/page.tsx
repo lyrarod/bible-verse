@@ -12,7 +12,7 @@ export default async function Home() {
       <div className="flex flex-col justify-center w-full max-w-lg min-h-screen p-6 whitespace-pre-wrap">
         <form
           action={generateVerse}
-          className="flex flex-col px-4 py-10 space-y-6 rounded-sm sm:px-6 dark:border dark:border-primary drop-shadow sm:space-y-8 bg-secondary"
+          className="flex flex-col px-4 py-10 space-y-6 border rounded-md shadow-inner sm:px-6 drop-shadow-sm sm:space-y-8 bg-secondary"
         >
           {verse ? <BlockQuote verse={verse} /> : null}
 
